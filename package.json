@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "ipgeobase-greybutton": "dist/bin/ipgeobase.js"
+    "ipgeobase-greybutton": "dist/bin/ipgeobase.js",
+    "weather-greybutton": "dist/bin/weather.js"
   },
   "engines": {
     "node": ">=8"
