@@ -7,13 +7,13 @@
 
 ### Install
 
-CLI: npm install -g ipgeobase-greybutton
+CLI: `npm install -g ipgeobase-greybutton`
 
-Module: npm install --save ipgeobase-greybutton
+Module: `npm install --save ipgeobase-greybutton`
 
 ### Use
 
-CLI: ipgeobase-greybutton 127.0.0.1
+CLI: `ipgeobase-greybutton 127.0.0.1`
 
 Module:
 
@@ -29,13 +29,13 @@ Services support: metaweather(default), openweathermap
 
 ### Install
 
-CLI: npm install -g weather-greybutton
+CLI: `npm install -g weather-greybutton`
 
-Module: npm install --save weather-greybutton
+Module: `npm install --save weather-greybutton`
 
 ### Use
 
-CLI: weather-greybutton --service openweathermap berlin
+CLI: `weather-greybutton --service openweathermap berlin`
 
 Module:
 
