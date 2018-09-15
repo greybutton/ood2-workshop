@@ -1,3 +1,4 @@
-import half from './half';
+import '@babel/polyfill';
+import app from './app';
 
-export default half;
+export default app;

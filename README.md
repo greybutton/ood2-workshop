@@ -1,23 +1,24 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+[![Build Status][build-badge]][build]
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+[build-badge]: https://img.shields.io/travis/greybutton/ood2-workshop.svg?style=flat-square
+[build]: https://travis-ci.org/greybutton/ood2-workshop
 
-# nodejs-package
+## Description
 
-[![Code Climate](https://codeclimate.com/github/hexlet-boilerplates/javascript-package/badges/gpa.svg)](https://codeclimate.com/github/hexlet-boilerplates/javascript-package)
-[![Issue Count](https://codeclimate.com/github/hexlet-boilerplates/javascript-package/badges/issue_count.svg)](https://codeclimate.com/github/hexlet-boilerplates/javascript-package)
-[![Build Status](https://travis-ci.org/hexlet-boilerplates/nodejs-package.svg?branch=master)](https://travis-ci.org/hexlet-boilerplates/nodejs-package)
+### Install
 
-## Setup
+CLI: npm install -g getinfo-greybutton
 
-```sh
-$ make install
-```
+Module: npm install --save getinfo-greybutton
 
-## Run tests
+### Use
 
-```sh
-$ make test
+CLI: getinfo-greybutton 127.0.0.1
+
+Module:
+
+```js
+import getinfo from "getinfo-greybutton";
+
+gendiff(127.0.0.1);
 ```
