@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "getinfo-greybutton": "dist/bin/hexlet.js"
+    "ipgeobase-greybutton": "dist/bin/ipgeobase.js"
   },
   "engines": {
     "node": ">=8"

@@ -1,10 +1,11 @@
+import '@babel/polyfill';
 import axios from 'axios';
 
-export default async (ip) => {
+export default async (ip, request = axios) => {
   const api = 'http://ip-api.com/json/';
   const url = `${api}${ip}`;
 
-  const response = await axios.get(url);
+  const response = await request.get(url);
 
   if (response.status === 200) {
     const {

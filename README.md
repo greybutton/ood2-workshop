@@ -7,18 +7,18 @@
 
 ### Install
 
-CLI: npm install -g getinfo-greybutton
+CLI: npm install -g ipgeobase-greybutton
 
-Module: npm install --save getinfo-greybutton
+Module: npm install --save ipgeobase-greybutton
 
 ### Use
 
-CLI: getinfo-greybutton 127.0.0.1
+CLI: ipgeobase-greybutton 127.0.0.1
 
 Module:
 
 ```js
-import getinfo from "getinfo-greybutton";
+import ipgeobase from "ipgeobase-greybutton";
 
-gendiff(127.0.0.1);
+ipgeobase('127.0.0.1');
 ```
