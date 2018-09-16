@@ -1,7 +1,9 @@
-export default class {
+export default class OpenWeathermap {
   constructor(request) {
     this.request = request;
   }
+
+  static name = 'openweathermap';
 
   getData(city) {
     const request = async () => {

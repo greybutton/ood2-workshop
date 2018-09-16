@@ -1,7 +1,7 @@
-import metaweather from './MetaWeather';
-import openweathermap from './OpenWeathermap';
+import MetaWeather from './MetaWeather';
+import OpenWeathermap from './OpenWeathermap';
 
-export default {
-  metaweather,
-  openweathermap,
-};
+export default [
+  MetaWeather,
+  OpenWeathermap,
+];

@@ -39,6 +39,8 @@ describe('weather', () => {
         this.request = request;
       }
 
+      static name = 'custom service';
+
       getData() {
         const response = this.request();
         return response.data;
@@ -49,10 +51,7 @@ describe('weather', () => {
 
     const weather = new Weather({
       http,
-      service: {
-        name: 'custom service',
-        klass: CustomService,
-      },
+      services: [CustomService],
     });
 
     const result = await weather.getDataByCity('berlin', 'custom service');

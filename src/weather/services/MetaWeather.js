@@ -1,7 +1,9 @@
-export default class {
+export default class MetaWeather {
   constructor(request) {
     this.request = request;
   }
+
+  static name = 'metaweather';
 
   getData(city) {
     const request = async () => {
