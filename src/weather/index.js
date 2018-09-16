@@ -10,17 +10,16 @@ export default class {
       services,
     } = options;
     this.request = http || axios;
-    this.services = services
-      ? this.createServices(defaultServices.concat(services))
-      : this.createServices(defaultServices);
+    const unionServices = services ? defaultServices.concat(services) : defaultServices;
+    this.services = this.createServices(unionServices);
   }
 
   createServices(services) {
-    const mergeServices = services
+    const servicesObj = services
       .reduce((acc, service) => ({ ...acc, [service.name]: service }), {});
-    const keys = Object.keys(mergeServices);
+    const keys = Object.keys(servicesObj);
     const newServices = keys.reduce((acc, key) => {
-      const Service = mergeServices[key];
+      const Service = servicesObj[key];
       const service = new Service(this.request);
       return { ...acc, [key]: service };
     }, {});
