@@ -43,15 +43,17 @@ Module:
 import Weather from "weather-greybutton";
 
 const weather = new Weather(options);
-const berlinWeather = weather.getWeather('berlin');
+const berlinWeather = weather.getDataByCity('berlin', 'openweathermap');
 ```
 
 #### options
 
 ```js
 {
-  service: 'string, default metaweather',
-  parser: function,
-  request: 'http library, default axios',
+  http: 'http library, default axios',
+  service: {
+    name: 'string',
+    klass: class,
+  },
 }
 ```
