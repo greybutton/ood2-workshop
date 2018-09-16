@@ -2,7 +2,7 @@ import Weather from '../src/weather';
 
 describe('weather', () => {
   test('openweathermap', async () => {
-    const response = () => ({
+    const http = () => ({
       status: 200,
       data: {
         coord: { lon: 13.39, lat: 52.52 },
@@ -20,29 +20,42 @@ describe('weather', () => {
         cod: 200,
       },
     });
+
     const weather = new Weather({
-      service: 'openweathermap',
-      request: response,
+      http,
     });
+
     const city = 'berlin';
-    const result = await weather.getWeather(city);
+    const serviceName = 'openweathermap';
+    const result = await weather.getDataByCity(city, serviceName);
     const received = result.name;
     const expected = 'Berlin';
     expect(received).toBe(expected);
   });
 
   test('custom service', async () => {
-    const parser = async (city, request) => {
-      const response = request();
-      return response.data;
-    };
-    const response = () => ({ data: { name: 'Berlin' } });
+    class CustomService {
+      constructor(request) {
+        this.request = request;
+      }
+
+      getData() {
+        const response = this.request();
+        return response.data;
+      }
+    }
+
+    const http = () => ({ data: { name: 'Berlin' } });
+
     const weather = new Weather({
-      service: 'custom service',
-      parser,
-      request: response,
+      http,
+      service: {
+        name: 'custom service',
+        klass: CustomService,
+      },
     });
-    const result = await weather.getWeather('berlin');
+
+    const result = await weather.getDataByCity('berlin', 'custom service');
     const received = result.name;
     const expected = 'Berlin';
     expect(received).toBe(expected);

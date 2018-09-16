@@ -1,20 +1,30 @@
 import '@babel/polyfill';
 import axios from 'axios';
 
-import parsers from './parsers';
-
-const services = ['openweathermap', 'metaweather'];
+import services from './services';
 
 export default class {
-  constructor({ service, parser, request = axios }) {
-    const isCustomService = !services.includes(service);
-    this.service = service || 'metaweather';
-    this.request = request;
-    this.parse = isCustomService ? parser : parsers[this.service];
+  constructor(options = {}) {
+    const {
+      http,
+      service,
+    } = options;
+    this.request = http || axios;
+    this.services = service ? {
+      ...services,
+      [service.name]: service.klass,
+    } : services;
   }
 
-  getWeather(city) {
-    const result = this.parse(city, this.request);
+  getDataByCity(city, serviceName = 'metaweather') {
+    const Service = this.getService(serviceName);
+    const service = new Service(this.request);
+    const result = service.getData(city);
     return result;
+  }
+
+  getService(serviceName) {
+    const service = this.services[serviceName];
+    return service;
   }
 }

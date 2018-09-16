@@ -11,9 +11,7 @@ export default commander
   .arguments('<City>')
   .option('-s, --service [name]', 'Weather service', 'metaweather')
   .action((city, options) => {
-    const weather = new Weather({
-      service: options.service,
-    });
-    weather.getWeather(city).then(res => console.log(res));
+    const weather = new Weather();
+    weather.getDataByCity(city, options.service).then(res => console.log(res));
   })
   .parse(process.argv);
