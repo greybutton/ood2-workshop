@@ -3,7 +3,7 @@
 import commander from 'commander';
 
 import { version } from '../../package.json';
-import weather from '../weather';
+import Weather from '../weather';
 
 export default commander
   .version(version, '-V, --version')
@@ -11,6 +11,9 @@ export default commander
   .arguments('<City>')
   .option('-s, --service [name]', 'Weather service', 'metaweather')
   .action((city, options) => {
-    weather(city, options).then(res => console.log(res));
+    const weather = new Weather({
+      service: options.service,
+    });
+    weather.getWeather(city).then(res => console.log(res));
   })
   .parse(process.argv);

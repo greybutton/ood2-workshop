@@ -1,33 +1,6 @@
-import weather from '../src/weather';
+import Weather from '../src/weather';
 
 describe('weather', () => {
-  test('metaweather', async () => {
-    const response = () => ({
-      status: 200,
-      data: {
-        timezone_name: 'LMT',
-        parent:
-        {
-          title: 'Germany',
-          location_type: 'Country',
-          woeid: 23424829,
-          latt_long: '51.164181,10.454150',
-        },
-        title: 'Berlin',
-        location_type: 'City',
-        woeid: 638242,
-        latt_long: '52.516071,13.376980',
-        timezone: 'Europe/Berlin',
-      },
-    });
-    const city = 'berlin';
-    const options = { service: 'openweathermap' };
-    const result = await weather(city, options, response);
-    const received = result.title;
-    const expected = 'Berlin';
-    expect(received).toBe(expected);
-  });
-
   test('openweathermap', async () => {
     const response = () => ({
       status: 200,
@@ -47,9 +20,29 @@ describe('weather', () => {
         cod: 200,
       },
     });
+    const weather = new Weather({
+      service: 'openweathermap',
+      request: response,
+    });
     const city = 'berlin';
-    const options = { service: 'openweathermap' };
-    const result = await weather(city, options, response);
+    const result = await weather.getWeather(city);
+    const received = result.name;
+    const expected = 'Berlin';
+    expect(received).toBe(expected);
+  });
+
+  test('custom service', async () => {
+    const parser = async (city, request) => {
+      const response = request();
+      return response.data;
+    };
+    const response = () => ({ data: { name: 'Berlin' } });
+    const weather = new Weather({
+      service: 'custom service',
+      parser,
+      request: response,
+    });
+    const result = await weather.getWeather('berlin');
     const received = result.name;
     const expected = 'Berlin';
     expect(received).toBe(expected);

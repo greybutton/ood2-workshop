@@ -40,7 +40,18 @@ CLI: `weather-greybutton --service openweathermap berlin`
 Module:
 
 ```js
-import weather from "weather-greybutton";
+import Weather from "weather-greybutton";
 
-weather('berlin', { services: 'openweathermap'});
+const weather = new Weather(options);
+const berlinWeather = weather.getWeather('berlin');
+```
+
+#### options
+
+```js
+{
+  service: 'string, default metaweather',
+  parser: function,
+  request: 'http library, default axios',
+}
 ```
