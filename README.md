@@ -46,14 +46,30 @@ const weather = new Weather(options);
 const berlinWeather = weather.getDataByCity('berlin', 'openweathermap');
 ```
 
-#### options
+#### Configuration
 
 ```js
-{
-  http: 'http library, default axios',
-  service: {
-    name: 'string',
-    klass: class,
-  },
+
+import Weather from "weather-greybutton";
+
+class CustomService {
+  constructor(request) {
+    this.request = request;
+  }
+
+  static name = 'custom service';
+
+  getData() {
+    const response = this.request();
+    return response.data;
+  }
 }
+
+const options = {
+  http: 'http library, default axios',
+  service: [CustomService]
+};
+
+const weather = new Weather(options);
+const berlinWeather = weather.getDataByCity('berlin', 'custom service');
 ```
